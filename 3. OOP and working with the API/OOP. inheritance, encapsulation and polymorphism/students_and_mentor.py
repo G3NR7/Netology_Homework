@@ -1,4 +1,5 @@
 class Student:
+
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -34,14 +35,14 @@ class Student:
 
 
 class Mentor:
+
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
         self.courses_attached = []
-        
 
-        
 class Lecture(Mentor):
+
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.grades = {}
@@ -62,7 +63,9 @@ class Lecture(Mentor):
     def __lt__(self, other):
         return self._Average_rating() < other._Average_rating()
 
+
 class Rewiwer(Mentor):  
+
     def __str__(self):
         return f'Имя: {self.name}\nФамилия: {self.surname}'
 
@@ -75,6 +78,7 @@ class Rewiwer(Mentor):
         else:
             return 'Ошибка'
 
+
 def average_rating_students(students :list, theme :str):
     count, c_len = 0, 0
     for i in students:
@@ -82,7 +86,6 @@ def average_rating_students(students :list, theme :str):
             count += sum(i.grades.get(theme))
             c_len += len(i.grades.get(theme))
     print(f'В рамках курса {theme} средняя оценка за Д/З всех студентов равна {count/c_len}')
-        
 
 def average_rating_lectures(lectures :list, theme :str):
     count, c_len = 0, 0
@@ -91,7 +94,6 @@ def average_rating_lectures(lectures :list, theme :str):
             count += sum(i.grades.get(theme))
             c_len += len(i.grades.get(theme))
     print(f'В рамках курса {theme} средняя оценка за лекции всех лекторов равна {count/c_len}')
-
 
 def main():
     best_student1 = Student('Student', 'One', 'M')
@@ -143,7 +145,6 @@ def main():
     print(best_student1 < best_student2, best_student1 > best_student2)
 
     print('------ ЗАДАНИЕ 4 -------')
-
     list_of_students = [best_student1, best_student2]
     list_of_lectures = [cool_lecture1, cool_lecture2]
 
@@ -152,8 +153,6 @@ def main():
 
     average_rating_lectures(list_of_lectures, 'Python')
     average_rating_lectures(list_of_lectures, 'SQL')
-
-
 
 
 if __name__ == '__main__':
